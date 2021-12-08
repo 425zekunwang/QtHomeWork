@@ -19,7 +19,8 @@ SOURCES += \
     log_in.cpp \
     main.cpp \
     mainsystem.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    test.cpp
 
 HEADERS += \
     log_in.h \
