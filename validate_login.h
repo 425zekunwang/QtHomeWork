@@ -1,0 +1,3 @@
+#ifndef VALIDATE_LOGIN_H
+#define VALIDATE_LOGIN_H
+#endif // VALIDATE_LOGIN_H

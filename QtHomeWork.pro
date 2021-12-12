@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,18 +17,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    add_admin.cpp \
+    addgoods.cpp \
+    addmarket.cpp \
+    ctrl_admin.cpp \
     log_in.cpp \
     main.cpp \
     mainsystem.cpp \
-    mainwindow.cpp \
-    test.cpp
+    mainwindow.cpp
 
 HEADERS += \
+    add_admin.h \
+    addgoods.h \
+    addmarket.h \
+    ctrl_admin.h \
     log_in.h \
     mainsystem.h \
     mainwindow.h
 
 FORMS += \
+    add_admin.ui \
+    addgoods.ui \
+    addmarket.ui \
+    ctrl_admin.ui \
     log_in.ui \
     mainsystem.ui \
     mainwindow.ui

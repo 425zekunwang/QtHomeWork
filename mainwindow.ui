@@ -32,6 +32,9 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="indent">
+     <number>1</number>
+    </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
@@ -113,7 +116,13 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="text">
-     <string>创建账套</string>
+     <string>添加账套</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -121,12 +130,18 @@ color: rgb(255, 255, 255);</string>
      <rect>
       <x>640</x>
       <y>450</y>
-      <width>93</width>
+      <width>121</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
      <string>删除账套</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -150,7 +165,7 @@ color: rgb(255, 255, 255);</string>
      <rect>
       <x>640</x>
       <y>510</y>
-      <width>93</width>
+      <width>121</width>
       <height>28</height>
      </rect>
     </property>
@@ -170,21 +185,22 @@ color: rgb(255, 255, 255);</string>
     <property name="styleSheet">
      <string notr="true">font: 20pt &quot;Agency FB&quot;;</string>
     </property>
-    <item>
-     <property name="text">
-      <string>万达</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>沃尔玛</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>世纪华联</string>
-     </property>
-    </item>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>120</y>
+      <width>241</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 22pt &quot;Agency FB&quot;;</string>
+    </property>
+    <property name="text">
+     <string>数据库未连接</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
