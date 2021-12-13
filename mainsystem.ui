@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>993</width>
+    <height>638</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>100</y>
-      <width>800</width>
+      <width>971</width>
       <height>471</height>
      </rect>
     </property>
@@ -34,9 +34,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>801</width>
-      <height>41</height>
+      <y>10</y>
+      <width>971</width>
+      <height>31</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -96,9 +96,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>801</width>
-      <height>101</height>
+      <y>10</y>
+      <width>971</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -113,7 +113,7 @@
      <rect>
       <x>0</x>
       <y>40</y>
-      <width>801</width>
+      <width>971</width>
       <height>61</height>
      </rect>
     </property>
@@ -136,6 +136,83 @@ background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0
        </property>
        <property name="text">
         <string>切换用户</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="text">
+        <string>开启多选</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_12">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>添加条件</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QComboBox" name="comboBox">
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <item>
+        <property name="text">
+         <string>商品名称</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>商品售价</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>商品库存</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>生产厂家</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>600</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>37656</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_11">
+       <property name="text">
+        <string>查询</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_13">
+       <property name="text">
+        <string>返回</string>
        </property>
       </widget>
      </item>
@@ -165,9 +242,9 @@ background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>110</y>
-      <width>811</width>
-      <height>441</height>
+      <y>120</y>
+      <width>971</width>
+      <height>471</height>
      </rect>
     </property>
     <property name="dragEnabled">
@@ -207,12 +284,31 @@ background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0
       <string>折后金额</string>
      </property>
     </column>
+    <column>
+     <property name="text">
+      <string>生产厂家</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="pushButton_10">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>100</y>
+      <width>92</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>刷新</string>
+    </property>
    </widget>
    <zorder>label_2</zorder>
    <zorder>label</zorder>
    <zorder>horizontalLayoutWidget</zorder>
    <zorder>horizontalLayoutWidget_2</zorder>
    <zorder>tableWidget</zorder>
+   <zorder>pushButton_10</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

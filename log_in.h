@@ -31,6 +31,7 @@ typedef struct goods
     float price;
     float discount;
     unsigned int inventory;//库存
+    QString producer;
 }goods;
 class log_in : public QMainWindow
 {

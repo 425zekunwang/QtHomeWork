@@ -21,6 +21,7 @@ SOURCES += \
     addgoods.cpp \
     addmarket.cpp \
     ctrl_admin.cpp \
+    dataquery.cpp \
     log_in.cpp \
     main.cpp \
     mainsystem.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     addgoods.h \
     addmarket.h \
     ctrl_admin.h \
+    dataquery.h \
     log_in.h \
     mainsystem.h \
     mainwindow.h
@@ -40,6 +42,7 @@ FORMS += \
     addgoods.ui \
     addmarket.ui \
     ctrl_admin.ui \
+    dataquery.ui \
     log_in.ui \
     mainsystem.ui \
     mainwindow.ui
