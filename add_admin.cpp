@@ -18,7 +18,7 @@ add_admin::~add_admin()
     delete ui;
 }
 
-void add_admin::on_buttonBox_accepted()
+void add_admin::on_buttonBox_accepted()//点击添加账户后
 {
     QString name=ui->lineEdit->text();
     QString code=ui->lineEdit_2->text();
@@ -32,7 +32,6 @@ void add_admin::on_buttonBox_accepted()
     else
     {
         QSqlQuery query;
-        QDateTime dataTime;
         QString order="insert into admin(name,pwd) values('%1','%2');";
         order=order.arg(name).arg(code);
 
@@ -45,6 +44,7 @@ void add_admin::on_buttonBox_accepted()
         add_ok.setWindowTitle("添加成功");
         add_ok.show();
         add_ok.exec();
+        emit senddata(true);//发射信号
         close();
     }
 }

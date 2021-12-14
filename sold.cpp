@@ -1,4 +1,4 @@
-#include "dataquery.h"
+#include "sold.h"
 #include "ui_dataquery.h"
 
 dataQuery::dataQuery(QWidget *parent) :

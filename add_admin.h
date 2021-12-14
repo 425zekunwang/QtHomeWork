@@ -17,7 +17,8 @@ public:
 
 private slots:
     void on_buttonBox_accepted();
-
+signals:
+    void senddata(bool);
 private:
     Ui::add_admin *ui;
 };

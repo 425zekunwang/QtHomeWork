@@ -23,6 +23,8 @@ private slots:
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
 
+    void receivedata(bool);
+    void update_current();
 private:
     Ui::ctrl_admin *ui;
 };

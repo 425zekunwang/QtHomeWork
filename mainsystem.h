@@ -19,14 +19,14 @@ public:
 private slots:
     void on_pushButton_8_clicked();
     void on_pushButton_2_clicked();
-
+    int if_sold(QString);
+    QString get_sole_time(QString);
     void on_pushButton_9_clicked();
 
     void on_pushButton_7_clicked();
 
     void on_pushButton_4_clicked();
 
-    void on_pushButton_10_clicked();
     void show_data();
     void update_current();
     void update_query(QString,QString);
@@ -37,6 +37,12 @@ private slots:
     void on_pushButton_13_clicked();
 
     void on_pushButton_12_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_mass_reg_clicked();
+
+    void on_pushButton_6_clicked();
 
 private:
     Ui::MainSystem *ui;

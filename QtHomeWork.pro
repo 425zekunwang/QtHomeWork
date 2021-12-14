@@ -21,31 +21,37 @@ SOURCES += \
     addgoods.cpp \
     addmarket.cpp \
     ctrl_admin.cpp \
-    dataquery.cpp \
+    file_reg.cpp \
     log_in.cpp \
     main.cpp \
     mainsystem.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    sell.cpp \
+    sold.cpp
 
 HEADERS += \
     add_admin.h \
     addgoods.h \
     addmarket.h \
     ctrl_admin.h \
-    dataquery.h \
+    file_reg.h \
     log_in.h \
     mainsystem.h \
-    mainwindow.h
+    mainwindow.h \
+    sell.h \
+    sold.h
 
 FORMS += \
     add_admin.ui \
     addgoods.ui \
     addmarket.ui \
     ctrl_admin.ui \
-    dataquery.ui \
+    file_reg.ui \
     log_in.ui \
     mainsystem.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    sell.ui \
+    sold.ui
 
 TRANSLATIONS += \
     QtHomeWork_zh_CN.ts

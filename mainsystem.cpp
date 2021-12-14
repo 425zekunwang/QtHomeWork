@@ -2,6 +2,7 @@
 #include "ui_mainsystem.h"
 #include"mainwindow.h"
 #include"addgoods.h"
+#include"sell.h"
 
 QList<goods> record;
 bool if_mutiple=false;
@@ -55,6 +56,7 @@ void MainSystem::on_pushButton_9_clicked()
 void MainSystem::on_pushButton_7_clicked()//添加库存
 {
     addgoods *addGoods=new addgoods();
+    connect(addGoods,SIGNAL(sendsignal()),this,SLOT(update_current()));
     addGoods->show();
 }
 
@@ -72,11 +74,6 @@ void MainSystem::on_pushButton_4_clicked()//勾选了数据查询
     ui->pushButton_7->hide();
     ui->pushButton_8->hide();
     ui->pushButton_9->hide();
-}
-
-void MainSystem::on_pushButton_10_clicked()
-{
-    update_current();
 }
 
 void MainSystem::update_current()
@@ -110,6 +107,7 @@ QString to_query=QString("select name,price,discount,inventory,producer from goo
 }
 void MainSystem::on_pushButton_11_clicked()//点击查询的函数
 {
+    record.clear();
 //    qDebug()<<"当前是"<<(if_mutiple?"多选":"单选")<<"模式";
     if(!if_mutiple)//单选模式
     {
@@ -155,6 +153,17 @@ void MainSystem::show_data()//更新的数据呈现
         ui->tableWidget->setItem(i,col++,new QTableWidgetItem(QString("%1").arg(record[i].price)));
         ui->tableWidget->setItem(i,col++,new QTableWidgetItem(QString("%1").arg(record[i].discount*record[i].price)));
         ui->tableWidget->setItem(i,col++,new QTableWidgetItem(QString("%1").arg(record[i].producer)));
+        int pieces=if_sold(record[i].name);
+        if(pieces==0)//如果未卖出过
+        {
+        ui->tableWidget->setItem(i,col++,new QTableWidgetItem("0"));
+        ui->tableWidget->setItem(i,col++,new QTableWidgetItem("Nothing"));
+        }
+        else
+        {
+            ui->tableWidget->setItem(i,col++,new QTableWidgetItem(QString("%1").arg(pieces)));
+            ui->tableWidget->setItem(i,col++,new QTableWidgetItem(get_sole_time(record[i].name)));
+        }
     }
 }
 
@@ -206,4 +215,38 @@ void MainSystem::on_pushButton_12_clicked()//这里是添加条件的函数
     tishi->setWindowTitle("添加成功!");
     tishi->show();
 
+}
+
+void MainSystem::on_pushButton_clicked()
+{
+    QMessageBox *help=new QMessageBox();
+    help->setText("鸽了！咕咕咕咕咕咕咕咕咕咕咕…………");
+    help->setWindowTitle("咕咕咕");
+    help->show();
+}
+
+void MainSystem::on_mass_reg_clicked()
+{
+;
+}
+
+void MainSystem::on_pushButton_6_clicked()
+{
+    sell *sell_ui=new sell();
+    connect(sell_ui,SIGNAL(send_sell()),this,SLOT(update_current()));
+    sell_ui->show();
+}
+int MainSystem::if_sold(QString name)
+{
+    QSqlQuery query;
+    query.exec("select pieces from sold where name=='"+name+"'");
+    query.next();
+    return query.value(0).toInt();
+}
+QString MainSystem::get_sole_time(QString name)
+{
+    QSqlQuery query;
+    query.exec("select DATETIME('NOW','LOCALTIME');");
+    query.next();
+    return query.value(0).toString();
 }

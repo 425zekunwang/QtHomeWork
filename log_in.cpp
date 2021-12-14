@@ -4,6 +4,7 @@
 
 QSqlDatabase database= QSqlDatabase::addDatabase("QSQLITE");
 bool if_god_mode=false;
+QStringList common;
 
 log_in::log_in(QWidget *parent) :
     QMainWindow(parent),
@@ -12,7 +13,7 @@ log_in::log_in(QWidget *parent) :
     ui->setupUi(this);
     database.setDatabaseName("qt.db");
     database.open();
-    adduser();
+    adduser();//创建窗口时，加载账户数据
 }
 
 log_in::~log_in()
@@ -59,23 +60,20 @@ int log_in::validate_pwd(QString pwd,QString admin)
     }
     if(if_god_mode==false)
     {
-        QStringList common={"zekun","chengjun","wenchao","feixia"};
         QString each;
-        foreach(each , common)
-        {
-            if(each==admin)
+
+        if(common.contains(admin))
+{
+            if(pwd=="root")
             {
-                if(pwd=="root")
-                {
-                    return 2;
-                }
-                else
-                {
-                    showError("口令错误","你再仔细想想？");
-                    return -1;
-                }
+                return 2;
             }
-        }
+            else
+            {
+                showError("口令错误","你再仔细想想？");
+                return -1;
+            }
+}
         showError("户名错误","啥也不是");
         return -1;
     }
@@ -83,7 +81,7 @@ int log_in::validate_pwd(QString pwd,QString admin)
     {
         if(ui->comboBox->currentText()=="super")
         {
-            if(pwd=="to be god")
+            if(pwd=="god")
                 return 1;
             else
                 showError("口令错误","你再仔细想想？");
@@ -134,9 +132,11 @@ void log_in::showError(QString title,QString content)
 void log_in::adduser()
 {
     QSqlQuery query;
-    query.exec("select name from admin");
+    query.exec("select name from admin");//把账户更新到下拉框里,并且更新内存里的账户数据
+    common.clear();
     while(query.next())
     {
         ui->comboBox->addItem(query.value(0).toString());
+        common.append(query.value(0).toString());
     }
 }

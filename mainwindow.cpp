@@ -2,14 +2,12 @@
 #include "ui_mainwindow.h"
 
 extern QSqlDatabase database;
-QSqlQuery curd;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     database = QSqlDatabase::addDatabase("QSQLITE");
 //    qDebug()<<QApplication::applicationDirPath();
     database.setDatabaseName("qt.db");
@@ -48,30 +46,31 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButton_3_clicked()//点击下一步
 {
     close();
     log_in *LogIn=new log_in();
     LogIn->show();
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_pushButton_4_clicked()//退出按钮
 {
     close();
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButton_2_clicked()//
 {
+    QSqlQuery curd;
     QString delmarket_name=ui->comboBox->currentText();
     ui->comboBox->removeItem(ui->comboBox->currentIndex());
-    curd.exec(QString("delete from surpermarket where name='%1';").arg(delmarket_name));
+    curd.exec(QString("delete from surpermarket where name=='%1';").arg(delmarket_name));
 
 }
 
 void MainWindow::on_pushButton_clicked() //添加账套
 {
     addMarket *newMarket=new addMarket();
-
+    //发射信号当添加了账套后，就会在主界面的下拉框中增加一个企业
     connect(newMarket,SIGNAL(sendData(QString)),this,SLOT(receiveData(QString)));
     newMarket->show();
 }
@@ -79,21 +78,14 @@ void MainWindow::on_pushButton_clicked() //添加账套
 void MainWindow::receiveData(QString data)
 {
     QSqlQuery if_repeat;
-    if_repeat.exec(QString("select count(name) from surpermarket where name='%1';").arg(data));
+    if_repeat.exec(QString("select count(name) from surpermarket where name=='%1';").arg(data));
     if_repeat.next();
+    //在QSqlQuery类中当执行exec()后会把指针放在记录集中第一个记录之上
 
-    if(if_repeat.value(0).toInt()==0)
+    if(if_repeat.value(0).toInt()==0)//如果发现数据库中的记录为零则添加一个
     {
         ui->comboBox->addItem(data);
-        if_repeat.exec(QString("insert into surpermarket values(%1,'%2');").arg(ui->comboBox->count()).arg(data));
-        if(if_repeat.exec())
-        {
-            qDebug()<<"添加失败"<<if_repeat.lastError();//这里很奇怪
-        }
-        else
-        {
-            qDebug()<<"添加成功";
-        }
+        if_repeat.exec(QString("insert into surpermarket(name) values('%1');").arg(data));
     }
     else
     {
@@ -104,5 +96,6 @@ void MainWindow::receiveData(QString data)
         err.show();
     }
     if_repeat.finish();
+    //该函数通常无需调用，除非同一QSqlQuery对象间隔一段时间再使用时，调用该函数可释放资源。
 }
 

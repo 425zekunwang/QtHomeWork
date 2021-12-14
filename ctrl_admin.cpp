@@ -29,6 +29,8 @@ ctrl_admin::~ctrl_admin()
 void ctrl_admin::on_pushButton_clicked()//新增用户
 {
     add_admin *add_admin_ui=new add_admin();
+    connect(add_admin_ui,SIGNAL(senddata(bool)),this,SLOT(receivedata(bool)));
+    //发射信号代表新增了用户后刷新当前数据
     add_admin_ui->show();
 }
 
@@ -41,11 +43,9 @@ void ctrl_admin::on_pushButton_2_clicked() //删除用户
     query.exec(QString("delete from admin where name='%1';").arg(to_del_admin));
 }
 
-void ctrl_admin::on_pushButton_3_clicked()
+void ctrl_admin::on_pushButton_3_clicked()//点击添加后弹出添加用户的操作界面
 {
     close();
-
-    connect(ui->pushButton_3,SIGNAL(close_mainwindow()),this,SLOT(when_open_mainsystem()));
     MainSystem *mainsystem=new MainSystem();
     mainsystem->show();
 }
@@ -54,6 +54,19 @@ void ctrl_admin::on_pushButton_3_clicked()
 void ctrl_admin::on_pushButton_4_clicked()
 {
     ui->comboBox->clear();
+    update_current();
+}
+
+void ctrl_admin::receivedata(bool flag)
+{
+    if(flag)//更新下拉框的账户
+    {
+        ui->comboBox->clear();
+        update_current();
+    }
+}
+void ctrl_admin::update_current()
+{
     QSqlQuery query;
     query.exec("select name from admin");
     while(query.next())

@@ -15,7 +15,7 @@ addgoods::~addgoods()
     delete ui;
 }
 
-void addgoods::on_pushButton_clicked()
+void addgoods::on_pushButton_clicked()//添加入库
 {
     QSqlQuery query;
 
@@ -48,4 +48,5 @@ void addgoods::on_pushButton_clicked()
     ui->lineEdit_2->clear();
     ui->lineEdit_3->clear();
     ui->lineEdit_4->clear();
+    emit sendsignal();
 }
