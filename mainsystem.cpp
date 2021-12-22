@@ -57,6 +57,7 @@ void MainSystem::on_pushButton_7_clicked()//添加库存
 {
     addgoods *addGoods=new addgoods();
     connect(addGoods,SIGNAL(sendsignal()),this,SLOT(update_current()));
+    connect(addGoods,SIGNAL(xinhao()),this,SLOT(update_current()));
     addGoods->show();
 }
 
@@ -127,7 +128,7 @@ void MainSystem::on_pushButton_11_clicked()//点击查询的函数
         }
         rearorder=rearorder.left(rearorder.length()-4);
         QSqlQuery query;
-//        qDebug()<<"多选语句"<<rearorder;
+     //   qDebug()<<"多选语句"<<rearorder;
         query.exec(QString("select name,price,discount,inventory,producer from goods where %1;").arg(rearorder));
         while(query.next())
         {
@@ -217,7 +218,7 @@ void MainSystem::on_pushButton_12_clicked()//这里是添加条件的函数
 
 }
 
-void MainSystem::on_pushButton_clicked()
+void MainSystem::on_pushButton_clicked()//彩蛋！！！
 {
     QMessageBox *help=new QMessageBox();
     help->setText("鸽了！咕咕咕咕咕咕咕咕咕咕咕…………");
@@ -230,20 +231,20 @@ void MainSystem::on_mass_reg_clicked()
 ;
 }
 
-void MainSystem::on_pushButton_6_clicked()
+void MainSystem::on_pushButton_6_clicked()//销售业务，信号槽机制
 {
     sell *sell_ui=new sell();
     connect(sell_ui,SIGNAL(send_sell()),this,SLOT(update_current()));
     sell_ui->show();
 }
-int MainSystem::if_sold(QString name)
+int MainSystem::if_sold(QString name)//销售记录
 {
     QSqlQuery query;
     query.exec("select pieces from sold where name=='"+name+"'");
     query.next();
     return query.value(0).toInt();
 }
-QString MainSystem::get_sole_time(QString name)
+QString MainSystem::get_sole_time(QString name)//销售时间
 {
     QSqlQuery query;
     query.exec("select DATETIME('NOW','LOCALTIME');");

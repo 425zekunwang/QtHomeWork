@@ -8,7 +8,7 @@
 #include"qdebug.h"
 extern QSqlDatabase database;
 
-ctrl_admin::ctrl_admin(QWidget *parent) :
+ctrl_admin::ctrl_admin(QWidget *parent) ://构造函数
     QWidget(parent),
     ui(new Ui::ctrl_admin)
 {
@@ -21,7 +21,7 @@ ctrl_admin::ctrl_admin(QWidget *parent) :
     }
 }
 
-ctrl_admin::~ctrl_admin()
+ctrl_admin::~ctrl_admin()//析构函数，释放内存
 {
     delete ui;
 }

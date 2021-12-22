@@ -26,8 +26,7 @@ SOURCES += \
     main.cpp \
     mainsystem.cpp \
     mainwindow.cpp \
-    sell.cpp \
-    sold.cpp
+    sell.cpp
 
 HEADERS += \
     add_admin.h \
@@ -38,8 +37,7 @@ HEADERS += \
     log_in.h \
     mainsystem.h \
     mainwindow.h \
-    sell.h \
-    sold.h
+    sell.h
 
 FORMS += \
     add_admin.ui \

@@ -6,7 +6,7 @@ QSqlDatabase database= QSqlDatabase::addDatabase("QSQLITE");
 bool if_god_mode=false;
 QStringList common;
 
-log_in::log_in(QWidget *parent) :
+log_in::log_in(QWidget *parent) ://构造函数
     QMainWindow(parent),
     ui(new Ui::log_in)
 {
@@ -16,7 +16,7 @@ log_in::log_in(QWidget *parent) :
     adduser();//创建窗口时，加载账户数据
 }
 
-log_in::~log_in()
+log_in::~log_in()//析构函数，释放内存
 {
     database.close();
     delete ui;
