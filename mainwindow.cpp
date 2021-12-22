@@ -8,11 +8,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //加载驱动
+
     database = QSqlDatabase::addDatabase("QSQLITE");
-    qDebug()<<QApplication::applicationDirPath();
-    QString dapath="qt.db";
-    //连接数据库sqlite3
+//    qDebug()<<QApplication::applicationDirPath();
+    QString dapath="./build-QtHomeWork-Desktop_Qt_5_9_9_MinGW_32bit-Debug/qt.db";
     database.setDatabaseName("qt.db");
     if (!database.open())
     {
@@ -39,12 +38,11 @@ MainWindow::MainWindow(QWidget *parent)
         }
 
         qDebug() << "Succeed to connect database." ;
-        query_markarket.finish();
     }
 }
 MainWindow::~MainWindow()
 {
-    database.close();//数据库关闭
+    database.close();
     delete ui;
 }
 
