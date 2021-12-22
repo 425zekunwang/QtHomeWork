@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     database = QSqlDatabase::addDatabase("QSQLITE");
 //    qDebug()<<QApplication::applicationDirPath();
     QString dapath="./build-QtHomeWork-Desktop_Qt_5_9_9_MinGW_32bit-Debug/qt.db";
